@@ -1,0 +1,34 @@
+{
+  "name": "@my-next-public-holiday/public-holidays",
+  "description": "Public holiday data",
+  "version": "0.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/remnantkevin/my-next-public-holiday.git",
+    "directory": "packages/public-holidays"
+  },
+  "keywords": [
+    "public holiday",
+    "holiday"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf ./dist/ && tsc && cp ./index.d.ts ./dist/index.d.ts",
+    "build:typedefs": "tsc --declaration --emitDeclarationOnly --outFile ./dist/index.d.ts"
+  },
+  "author": "Kevin Elliott (https://kevinelliott.io)",
+  "license": "MIT",
+  "devDependencies": {
+    "node-fetch": "^3.1.0",
+    "zod": "^3.11.6"
+  }
+}
