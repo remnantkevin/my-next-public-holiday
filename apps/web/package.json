@@ -28,6 +28,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",
+    "rollup": "^2.62.0",
+    "rollup-plugin-visualizer": "^5.5.2",
     "vite": "^2.7.2",
     "vue-tsc": "^0.29.8"
   }
