@@ -9,27 +9,25 @@ interface GetHolidaysOptions {
   currentDate: Date;
 }
 
-export async function getNextHoliday(): Promise<{
-  nextHoliday: { name: string; dayOfWeekName: string; formattedDate: string };
-  allFutureHolidays: Holiday[];
+export type HolidayWithDate = Holiday & { date: Date };
+
+export async function getHolidays(): Promise<{
+  nextHoliday: HolidayWithDate;
+  otherHolidays: HolidayWithDate[];
+  allHolidays: HolidayWithDate[];
 }> {
   const ipInfo = await getIpInfo();
 
-  const holidays = getHolidaysOnOrAfter({
+  const holidays: HolidayWithDate[] = getHolidaysOnOrAfter({
     countryCode: ipInfo.country,
     regionName: ipInfo.region,
     currentDate: new Date(),
-  });
-
-  const nextHoliday = {
-    name: holidays[0].name,
-    dayOfWeekName: DaysOfTheWeek[getDay(getDateFromHoliday(holidays[0]))],
-    formattedDate: getFormattedDate(getDateFromHoliday(holidays[0])),
-  };
+  }).map((x) => ({ ...x, date: getDateFromHoliday(x) }));
 
   return {
-    nextHoliday,
-    allFutureHolidays: holidays,
+    nextHoliday: holidays[0],
+    otherHolidays: holidays.slice(1),
+    allHolidays: holidays,
   };
 }
 
@@ -44,13 +42,13 @@ function getHolidaysOnOrAfter(options: GetHolidaysOptions): Holiday[] {
 }
 
 function getHolidaysSorted(options: GetHolidaysOptions): Holiday[] {
-  const holidays = getHolidays(options);
+  const holidays = getFutureHolidays(options);
   const sortedByDate = sortBy(holidays, (x) => x.dateNum);
 
   return sortedByDate;
 }
 
-function getHolidays(options: GetHolidaysOptions): Holiday[] {
+function getFutureHolidays(options: GetHolidaysOptions): Holiday[] {
   const { countryCode, regionName, currentDate } = options;
   const currentYear = getYear(currentDate);
 
@@ -69,7 +67,13 @@ function getDateFromHoliday(holiday: Holiday): Date {
   return new Date(holiday.year, holiday.month - 1, holiday.day);
 }
 
-function getFormattedDate(date: Date): string {
+export function getFormattedDate(date: Date | undefined): string {
+  if (!date) return "";
   // return format(date, "EEEE, d MMMM yyyy");
   return format(date, "d MMMM yyyy");
+}
+
+export function getDayOfWeekName(date: Date | undefined): string {
+  if (!date) return "";
+  return DaysOfTheWeek[getDay(date)];
 }

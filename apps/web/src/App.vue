@@ -12,6 +12,8 @@ export default defineComponent({
 </template>
 
 <style>
+@import "./assets/styles/openPropsOverrides.css";
+
 body,
 html {
   height: 100%;
@@ -34,6 +36,12 @@ h1 {
 h2 {
   font-size: var(--font-size-3);
   font-weight: var(--font-weight-4);
+  max-inline-size: var(--size-header-2);
+}
+
+h3 {
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-3);
   max-inline-size: var(--size-header-2);
 }
 
