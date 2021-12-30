@@ -1,7 +1,7 @@
 {
   "name": "my-next-public-holiday",
   "version": "0.0.0",
-  "description": "Finds the date of",
+  "description": "Find the date of your next public holiday based on your location.",
   "private": true,
   "homepage": "https://github.com/remnantkevin/my-next-public-holiday#readme",
   "repository": {
