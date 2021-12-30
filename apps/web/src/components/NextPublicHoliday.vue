@@ -146,16 +146,19 @@ export default defineComponent({
   place-content: center;
 }
 .flexbox-grid {
-  --min: 10ch;
-  --gap: 1rem;
-
   block-size: 100%;
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--gap);
+  flex-direction: column;
+  gap: var(--size-3);
 }
 
 .flexbox-grid > * {
-  flex: 1 1 var(--min);
+  flex: 1 1;
+}
+
+@media (min-width: 768px) {
+  .flexbox-grid {
+    flex-direction: row;
+  }
 }
 </style>
