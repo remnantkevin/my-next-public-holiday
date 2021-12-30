@@ -1,4 +1,4 @@
-import { au, Holiday, za } from "@my-next-public-holiday/public-holidays";
+import { AU, Holiday, ZA } from "@my-next-public-holiday/public-holiday-data";
 import { DaysOfTheWeek } from "./constants";
 import { getIpInfo } from "./ipInfo";
 import { format, getDay, getYear, sortBy } from "./utils";
@@ -53,11 +53,11 @@ function getFutureHolidays(options: GetHolidaysOptions): Holiday[] {
   const currentYear = getYear(currentDate);
 
   if (countryCode.trim().toUpperCase() === "AU") {
-    return au.filter(
+    return AU.filter(
       (x) => x.year >= currentYear && x.regionName === regionName
     );
   } else if (countryCode.trim().toUpperCase() === "ZA") {
-    return za.filter((x) => x.year >= currentYear);
+    return ZA.filter((x) => x.year >= currentYear);
   } else {
     return [];
   }

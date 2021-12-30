@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ExternalHoliday, HolidayApiResponse } from "./types";
+import { ExternalHoliday, HolidayApiResponse } from "./types.js";
 
 export const StateCodeSchema = z.enum([
   "act",

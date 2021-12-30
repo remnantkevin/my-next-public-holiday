@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Calendar } from "v-calendar";
+import { Calendar, CalendarElement } from "v-calendar";
 import { computed, defineComponent, ref, watch } from "vue";
 import useHolidays from "../lib/composables/useHolidays";
 import {
@@ -14,7 +14,7 @@ export default defineComponent({
   components: { Card, Calendar, Loader },
 
   setup() {
-    const calendar = ref();
+    const calendar = ref<CalendarElement>();
 
     const { nextHoliday, nextHolidayFound, otherHolidays } = useHolidays();
 
@@ -71,8 +71,8 @@ export default defineComponent({
     watch(
       calendar,
       async () => {
-        await calendar.value.move(nextHoliday.value?.date);
-        await calendar.value.focusDate(nextHoliday.value?.date);
+        await calendar.value?.move(nextHoliday.value?.date);
+        await calendar.value?.focusDate(nextHoliday.value?.date);
       },
       {
         flush: "post",

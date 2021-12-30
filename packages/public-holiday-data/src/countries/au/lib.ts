@@ -1,5 +1,5 @@
-import { StateCodeSchema, StateNameSchema } from "./schemas";
-import { StateCode, StateName } from "./types";
+import { StateCodeSchema, StateNameSchema } from "./schemas.js";
+import { StateCode, StateName } from "./types.js";
 
 // https://data.gov.au/dataset/ds-dga-b1bc6077-dadd-4f61-9f8c-002ab2cdff10/details
 export const holidayApiResourceIds = {

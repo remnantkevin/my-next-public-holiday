@@ -1,5 +1,5 @@
 {
-  "name": "@my-next-public-holiday/website",
+  "name": "@my-next-public-holiday/web",
   "description": "Website for My Next Public Holiday",
   "version": "0.0.0",
   "private": true,
@@ -19,7 +19,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@my-next-public-holiday/public-holidays": "0.0.0",
+    "@my-next-public-holiday/public-holiday-data": "0.0.0",
     "@popperjs/core": "^2.11.0",
     "just-sort-by": "^3.0.1",
     "open-props": "^1.0.14",

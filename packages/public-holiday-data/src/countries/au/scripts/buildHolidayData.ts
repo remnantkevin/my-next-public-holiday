@@ -1,9 +1,9 @@
 import { writeFile } from "fs/promises";
 import fetch from "node-fetch";
-import { Holiday } from "../../../types/holiday";
-import { holidayApiResourceIds, stateCodeToName } from "../lib";
-import { HolidayApiResponseSchema } from "../schemas";
-import { ExternalHoliday } from "../types";
+import { Holiday } from "../../../types/holiday.js";
+import { holidayApiResourceIds, stateCodeToName } from "../lib.js";
+import { HolidayApiResponseSchema } from "../schemas.js";
+import { ExternalHoliday } from "../types.js";
 
 const externalHolidayData = await Promise.all(
   Object.values(holidayApiResourceIds).map((x) => getHolidayDataFromApi(x))

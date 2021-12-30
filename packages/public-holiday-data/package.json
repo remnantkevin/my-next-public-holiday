@@ -1,12 +1,12 @@
 {
-  "name": "@my-next-public-holiday/public-holidays",
+  "name": "@my-next-public-holiday/public-holiday-data",
   "description": "Public holiday data",
   "version": "0.0.0",
   "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/remnantkevin/my-next-public-holiday.git",
-    "directory": "packages/public-holidays"
+    "directory": "packages/public-holiday-data"
   },
   "keywords": [
     "public holiday",
@@ -22,13 +22,15 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "rm -rf ./dist/ && tsc && cp ./index.d.ts ./dist/index.d.ts",
-    "build:typedefs": "tsc --declaration --emitDeclarationOnly --outFile ./dist/index.d.ts"
+    "build:all": "pnpm run build:data && pnpm run build",
+    "build:data": "node --loader ts-node/esm ./src/countries/au/scripts/buildHolidayData.ts",
+    "build": "rm -rf ./dist/ && tsc"
   },
-  "author": "Kevin Elliott (https://kevinelliott.io)",
+  "author": "Kevin Elliott",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "node-fetch": "^3.1.0",
+    "ts-node": "^10.4.0",
     "zod": "^3.11.6"
   }
 }
