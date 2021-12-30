@@ -15,6 +15,14 @@
   "type": "module",
   "author": "Kevin Elliott",
   "license": "MIT",
+  "scripts": {
+    "setup": "npm install -g pnpm && pnpm run setup:local",
+    "setup:local": "pnpm install:data && pnpm build:data && pnpm install:web",
+    "install:data": "pnpm install --filter=@my-next-public-holiday/public-holiday-data",
+    "install:web": "pnpm install --filter=@my-next-public-holiday/web",
+    "build:data": "pnpm build --filter=@my-next-public-holiday/public-holiday-data",
+    "build:web": "pnpm build --filter=@my-next-public-holiday/web"
+  },
   "dependencies": {
     "@types/node": "14.17.6",
     "date-fns": "^2.27.0",
