@@ -1,4 +1,10 @@
-import { AU, Holiday, ZA } from "@my-next-public-holiday/public-holiday-data";
+import {
+  AU,
+  GB,
+  Holiday,
+  IE,
+  ZA,
+} from "@my-next-public-holiday/public-holiday-data";
 import { DaysOfTheWeek } from "./constants";
 import { getIpInfo } from "./ipInfo";
 import { format, getDay, getYear, sortBy } from "./utils";
@@ -56,6 +62,12 @@ function getFutureHolidays(options: GetHolidaysOptions): Holiday[] {
     return AU.filter(
       (x) => x.year >= currentYear && x.regionName === regionName
     );
+  } else if (countryCode.trim().toUpperCase() === "GB") {
+    return GB.filter(
+      (x) => x.year >= currentYear && x.regionName === regionName
+    );
+  } else if (countryCode.trim().toUpperCase() === "IE") {
+    return IE.filter((x) => x.year >= currentYear);
   } else if (countryCode.trim().toUpperCase() === "ZA") {
     return ZA.filter((x) => x.year >= currentYear);
   } else {
@@ -69,7 +81,6 @@ function getDateFromHoliday(holiday: Holiday): Date {
 
 export function getFormattedDate(date: Date | undefined): string {
   if (!date) return "";
-  // return format(date, "EEEE, d MMMM yyyy");
   return format(date, "d MMMM yyyy");
 }
 
