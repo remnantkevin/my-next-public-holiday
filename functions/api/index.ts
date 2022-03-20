@@ -1,9 +1,9 @@
 import { Holiday } from "../../types/holiday";
 
-const onRequest: PagesFunction<{ DATA: KVNamespace }> = async function ({
+export const onRequest: PagesFunction<{ DATA: KVNamespace }> = async ({
   request,
   env,
-}) {
+}) => {
   try {
     if (!request.cf)
       throw new Error("No 'cf' properties found on incoming Request.");
@@ -24,5 +24,3 @@ const onRequest: PagesFunction<{ DATA: KVNamespace }> = async function ({
     return new Response(JSON.stringify(e, Object.getOwnPropertyNames(e)));
   }
 };
-
-export default onRequest;
