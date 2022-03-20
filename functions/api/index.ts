@@ -8,7 +8,7 @@ export const onRequest: PagesFunction<{
 
     const { country, regionCode } = request.cf;
 
-    const kv = await env.TEST.get(`akey`, "text");
+    const kv = await env.TEST.get("akey", "text");
 
     // if (!holidayData) throw new Error("No holiday data found.");
 
