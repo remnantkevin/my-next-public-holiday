@@ -1,6 +1,6 @@
 export const onRequest: PagesFunction<{
   DATA: KVNamespace;
-  TEST: KVNamespace;
+  PETER: KVNamespace;
 }> = async ({ request, env }) => {
   try {
     if (!request.cf)
@@ -8,7 +8,7 @@ export const onRequest: PagesFunction<{
 
     const { country, regionCode } = request.cf;
 
-    const kv = await env.TEST.get("akey", "text");
+    const kv = await env.PETER.get("YES", "text");
 
     // if (!holidayData) throw new Error("No holiday data found.");
 
