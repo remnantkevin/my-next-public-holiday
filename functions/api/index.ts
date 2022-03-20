@@ -21,6 +21,12 @@ export const onRequest: PagesFunction<{ DATA: KVNamespace }> = async ({
 
     return new Response(JSON.stringify(holidayData[1]));
   } catch (e) {
-    return new Response(JSON.stringify(e, Object.getOwnPropertyNames(e)));
+    return new Response(
+      JSON.stringify({
+        error: JSON.stringify(e, Object.getOwnPropertyNames(e)),
+        request,
+        env,
+      })
+    );
   }
 };
